@@ -6,13 +6,10 @@ function getComputerChoice() {
     return Math.floor(Math.random() * 3);
 }
 
-function getPlayerChoice() {
-    let choiceText = prompt("Rock, paper or scissors?");
-    choiceText = choiceText.trim().toLowerCase();
-    return OPTIONS.indexOf(choiceText);
-}
+function playRound(e) {
+    let playerSelection = OPTIONS.indexOf(e.target.getAttribute('id'));
+    let computerSelection = getComputerChoice();
 
-function playRound(playerSelection, computerSelection) {
     let result = (playerSelection - computerSelection + 3) % 3;
 
     if (result == 0) {
@@ -24,7 +21,7 @@ function playRound(playerSelection, computerSelection) {
         console.log(`You win! ${OPTIONS[playerSelection]} beats ${OPTIONS[computerSelection]}`);
         return 1;
     }
-    
+
     if (result == 2) {
         console.log(`You lose! ${OPTIONS[computerSelection]} beats ${OPTIONS[playerSelection]}`);
         return -1;
@@ -54,3 +51,7 @@ function game() {
         console.log("It's a tie! No one won!");
     }
 }
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => button.addEventListener('click', playRound));
