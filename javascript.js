@@ -18,8 +18,6 @@ function playRound(e) {
 
     let roundResult = (playerSelection - computerSelection + 3) % 3;
 
-    console.log(`${playerSelection}\t${computerSelection}\t${roundResult}`);
-
     if (roundResult == 0) choices.textContent = "It's a tie!";
     else if (roundResult == 1) {
         choices.textContent = `You win! ${OPTIONS[playerSelection]} beats ${OPTIONS[computerSelection]}`;
